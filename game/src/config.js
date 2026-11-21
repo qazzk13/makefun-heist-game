@@ -16,8 +16,8 @@ export const GUARD_HALF_ANGLE = 0.6;
 
 export const ALARM_MAX = 100;
 export const ALARM_DECAY_PER_SEC = 14;
-export const ALARM_GUARD_PER_SEC = 62;
-export const ALARM_CAMERA_PER_SEC = 50;
+export const ALARM_GUARD_PER_SEC = 48;
+export const ALARM_CAMERA_PER_SEC = 40;
 export const ALARM_LOOT_GRAB = 15;
 
 export const SMOKE_RADIUS = 105;
