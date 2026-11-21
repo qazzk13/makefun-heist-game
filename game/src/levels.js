@@ -1,0 +1,105 @@
+// Velvet Fox — the three rooms of the heist. Each level is one plain object:
+// walls (rectangles), guard patrols (waypoint loops), sweeping cameras,
+// the loot, the exit (locked until the loot is taken), the player's start,
+// optional bonus coins and the tools the level hands out. The layouts are
+// drawn so every room has at least two routes to the loot.
+export const LEVELS = [
+  {
+    name: 'The Marlow Gallery',
+    subtitle: 'Level 1 — slip past the night watch, lift the Sunset Diamond.',
+    parSeconds: 75,
+    player: { x: 80, y: 560 },
+    loot: { x: 880, y: 80, name: 'Sunset Diamond', value: 1000 },
+    exit: { x: 880, y: 560, w: 52, h: 52 },
+    tools: { smoke: 2, coins: 3 },
+    coins: [
+      { x: 200, y: 120 },
+      { x: 480, y: 560 },
+      { x: 760, y: 300 },
+    ],
+    walls: [
+      { x: 320, y: 16, w: 16, h: 280 },
+      { x: 320, y: 400, w: 16, h: 224 },
+      { x: 640, y: 240, w: 16, h: 200 },
+      { x: 640, y: 520, w: 16, h: 104 },
+      { x: 336, y: 320, w: 180, h: 16 },
+    ],
+    guards: [
+      { path: [[420, 120], [860, 120]], speed: 62, pause: 1.4 },
+      { path: [[560, 300], [560, 520]], speed: 62, pause: 1.2 },
+    ],
+    cameras: [
+      { x: 700, y: 16, baseAngle: Math.PI / 2, arc: 0.9, speed: 0.45 },
+    ],
+  },
+  {
+    name: 'The Halcyon Vault',
+    subtitle: 'Level 2 — the vault room has one door and two cameras watching it.',
+    parSeconds: 95,
+    player: { x: 80, y: 560 },
+    loot: { x: 480, y: 320, name: 'Halcyon Ledger', value: 1500 },
+    exit: { x: 880, y: 80, w: 52, h: 52 },
+    tools: { smoke: 2, coins: 3 },
+    coins: [
+      { x: 120, y: 120 },
+      { x: 880, y: 560 },
+      { x: 620, y: 120 },
+    ],
+    walls: [
+      { x: 280, y: 16, w: 16, h: 200 },
+      { x: 280, y: 320, w: 16, h: 304 },
+      { x: 680, y: 16, w: 16, h: 304 },
+      { x: 680, y: 424, w: 16, h: 200 },
+      { x: 400, y: 200, w: 16, h: 120 },
+      { x: 400, y: 380, w: 16, h: 60 },
+      { x: 544, y: 200, w: 16, h: 240 },
+      { x: 400, y: 200, w: 160, h: 16 },
+      { x: 400, y: 424, w: 160, h: 16 },
+      { x: 296, y: 420, w: 220, h: 16 },
+    ],
+    guards: [
+      { path: [[160, 120], [160, 520]], speed: 72, pause: 1.2 },
+      { path: [[620, 460], [620, 580]], speed: 72, pause: 1.0 },
+      { path: [[360, 560], [620, 560]], speed: 72, pause: 1.2 },
+    ],
+    cameras: [
+      { x: 480, y: 16, baseAngle: Math.PI / 2, arc: 0.8, speed: 0.55 },
+      { x: 944, y: 300, baseAngle: Math.PI, arc: 0.7, speed: 0.5 },
+    ],
+  },
+  {
+    name: 'The Gilded Penthouse',
+    subtitle: 'Level 3 — four guards, three cameras, one very rich mark.',
+    parSeconds: 120,
+    player: { x: 80, y: 80 },
+    loot: { x: 880, y: 560, name: 'Gilded Phoenix', value: 2500 },
+    exit: { x: 80, y: 560, w: 52, h: 52 },
+    tools: { smoke: 3, coins: 4 },
+    coins: [
+      { x: 200, y: 560 },
+      { x: 480, y: 80 },
+      { x: 880, y: 120 },
+    ],
+    walls: [
+      { x: 240, y: 16, w: 16, h: 260 },
+      { x: 240, y: 380, w: 16, h: 244 },
+      { x: 480, y: 200, w: 16, h: 424 },
+      { x: 480, y: 16, w: 16, h: 100 },
+      { x: 720, y: 16, w: 16, h: 300 },
+      { x: 720, y: 420, w: 16, h: 204 },
+      { x: 256, y: 480, w: 224, h: 16 },
+      { x: 496, y: 140, w: 224, h: 16 },
+    ],
+    guards: [
+      { path: [[360, 120], [360, 300]], speed: 82, pause: 1.0 },
+      { path: [[600, 360], [860, 360]], speed: 82, pause: 1.0 },
+      { path: [[120, 340], [360, 340]], speed: 82, pause: 1.2 },
+      { path: [[780, 460], [780, 580]], speed: 82, pause: 0.9 },
+    ],
+    cameras: [
+      { x: 480, y: 16, baseAngle: Math.PI / 2, arc: 0.8, speed: 0.6 },
+      { x: 944, y: 200, baseAngle: Math.PI, arc: 0.7, speed: 0.55 },
+      { x: 16, y: 320, baseAngle: 0, arc: 0.7, speed: 0.5 },
+    ],
+  },
+];
