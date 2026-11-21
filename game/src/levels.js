@@ -29,7 +29,7 @@ export const LEVELS = [
       { path: [[560, 300], [560, 520]], speed: 62, pause: 1.2 },
     ],
     cameras: [
-      { x: 700, y: 16, baseAngle: Math.PI / 2, arc: 0.9, speed: 0.45 },
+      { x: 480, y: 16, baseAngle: Math.PI / 2, arc: 0.8, speed: 0.45 },
     ],
   },
   {

@@ -31,6 +31,7 @@ export function createGame() {
     cameras: [],
     alarm: 0,
     score: 0,
+    scoreAtLevelStart: 0,
     levelTime: 0,
     totalTime: 0,
     lootTaken: false,
@@ -86,8 +87,21 @@ export function createGame() {
 
   function startRun() {
     game.score = 0;
+    game.scoreAtLevelStart = 0;
     game.totalTime = 0;
     loadLevel(0);
+    game.screen = 'playing';
+  }
+
+  function advanceLevel() {
+    game.scoreAtLevelStart = game.score;
+    loadLevel(game.levelIndex + 1);
+    game.screen = 'playing';
+  }
+
+  function retryLevel() {
+    game.score = game.scoreAtLevelStart;
+    loadLevel(game.levelIndex);
     game.screen = 'playing';
   }
 
@@ -279,19 +293,13 @@ export function createGame() {
 
   function clickButton(id) {
     if (id === 'start' || id === 'again') startRun();
-    else if (id === 'retry') {
-      loadLevel(game.levelIndex);
-      game.screen = 'playing';
-    } else if (id === 'menu') {
+    else if (id === 'retry') retryLevel();
+    else if (id === 'menu') {
       loadLevel(0);
       game.screen = 'menu';
     } else if (id === 'next') {
-      if (game.levelIndex + 1 < game.totalLevels) {
-        loadLevel(game.levelIndex + 1);
-        game.screen = 'playing';
-      } else {
-        game.screen = 'won';
-      }
+      if (game.levelIndex + 1 < game.totalLevels) advanceLevel();
+      else game.screen = 'won';
     } else if (id === 'resume') {
       game.screen = 'playing';
     }
@@ -304,7 +312,7 @@ export function createGame() {
         return;
       }
       if (input.wasPressed('KeyR')) {
-        loadLevel(game.levelIndex);
+        retryLevel();
         return;
       }
       if (input.wasPressed('Escape')) {
